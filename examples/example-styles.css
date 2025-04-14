@@ -1,0 +1,752 @@
+/* Example Page Styles */
+.example-page {
+    background: #f5f5f5;
+    min-height: 100vh;
+    opacity: 0;
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.example-nav {
+    background: white;
+    padding: 1rem 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    transform: translateY(-100%);
+    animation: slideDown 0.5s ease-out forwards;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+.back-link {
+    color: var(--color-text);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+}
+
+.back-link:hover {
+    color: var(--color-primary);
+    background: rgba(158, 42, 43, 0.1);
+}
+
+.example-content {
+    padding: 5rem 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    opacity: 0;
+    animation: fadeIn 0.5s ease-out 0.3s forwards;
+}
+
+.invitation-preview {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    transform: scale(0.95);
+    opacity: 0;
+    animation: scaleIn 0.5s ease-out 0.5s forwards;
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0.95);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.phone-frame {
+    background: #1a1a1a;
+    border-radius: 40px;
+    padding: 12px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+.phone-frame::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40%;
+    height: 12px;
+    background: #1a1a1a;
+    border-radius: 0 0 10px 10px;
+}
+
+.phone-screen {
+    background: white;
+    border-radius: 30px;
+    overflow: hidden;
+    position: relative;
+    padding-bottom: 200%;
+    transition: all 0.3s ease;
+}
+
+.invitation-slides {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+}
+
+.slide {
+    min-height: 100%;
+    opacity: 0;
+    animation: fadeIn 0.5s ease-out 0.7s forwards;
+}
+
+.slide-content {
+    padding: 2rem;
+}
+
+/* Classic Style */
+.classic-style {
+    background: #fff;
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--color-primary);
+    text-align: center;
+    background-image: url('../images/classic-bg.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.classic-style h1 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    font-weight: 600;
+}
+
+.bow-illustration {
+    width: 100%;
+    height: 100px;
+    background-image: url('../images/bow.svg');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 2rem 0;
+}
+
+.date {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.location {
+    margin: 2rem 0;
+}
+
+.location h2 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.timeline {
+    margin: 2rem 0;
+}
+
+.timeline h2 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.timeline-item {
+    display: flex;
+    justify-content: space-between;
+    margin: 0.5rem 0;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(158, 42, 43, 0.2);
+}
+
+.dress-code {
+    margin: 2rem 0;
+}
+
+.color-palette {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.color {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.color.burgundy { background: var(--color-primary); }
+.color.beige { background: #E6D5B8; }
+.color.black { background: #000; }
+.color.gold { background: var(--color-accent); }
+.color.pink { background: #E8B4B8; }
+
+.rsvp-form {
+    margin: 2rem 0;
+}
+
+.rsvp-form h2 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.rsvp-form input {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid rgba(158, 42, 43, 0.2);
+    border-radius: 5px;
+}
+
+.checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.rsvp-form button {
+    background: var(--color-primary);
+    color: white;
+    border: none;
+    padding: 0.5rem 2rem;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.rsvp-form button:hover {
+    background: var(--color-accent);
+}
+
+.signature {
+    margin: 2rem 0;
+    font-style: italic;
+}
+
+/* Modern Red Style */
+.modern-red {
+    background: #FFF5F5;
+}
+
+/* Minimalist Style */
+.minimalist {
+    background: white;
+}
+
+/* Romantic Style */
+.romantic {
+    background: #FFF9F9;
+}
+
+/* Fun Style */
+.fun {
+    background: #FFEBE9;
+}
+
+/* Modern Pink Style */
+.modern-pink {
+    background: #FF69B4;
+}
+
+/* Modern Red Style */
+.modern-red-style {
+    background: #FFF5F5;
+    font-family: 'Montserrat', sans-serif;
+    color: #333;
+}
+
+.modern-red-style .header-section {
+    background: #FF0000;
+    color: white;
+    padding: 2rem 1rem;
+    text-align: center;
+    margin: -2rem -2rem 2rem -2rem;
+}
+
+.modern-red-style h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0;
+}
+
+.modern-red-style .photo-block {
+    position: relative;
+    margin: 1rem -2rem;
+    background: #FFE4E4;
+    padding: 1rem;
+}
+
+.modern-red-style .photo-block img {
+    width: 100%;
+    border-radius: 15px;
+    margin: 0;
+}
+
+.modern-red-style .text-overlay {
+    background: #FF0000;
+    color: white;
+    padding: 1rem;
+    border-radius: 15px;
+    margin-top: -1rem;
+    position: relative;
+    z-index: 1;
+}
+
+.modern-red-style .info-section {
+    margin: 2rem 0;
+}
+
+.modern-red-style .info-block {
+    background: #FFE4E4;
+    border-radius: 15px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.modern-red-style .date-block {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #FF0000;
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.modern-red-style .map-button {
+    background: #FF0000;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    width: 100%;
+    margin-top: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.modern-red-style .map-button:hover {
+    background: #CC0000;
+}
+
+.modern-red-style .details-section {
+    background: #FFE4E4;
+    border-radius: 15px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+}
+
+.modern-red-style .gift-info {
+    text-align: center;
+    font-size: 1.2rem;
+    margin: 1rem 0;
+}
+
+.modern-red-style .note {
+    color: #FF0000;
+    font-size: 0.9rem;
+    font-style: italic;
+}
+
+.modern-red-style .dress-code {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.modern-red-style .dress-note {
+    font-size: 0.8rem;
+    color: #666;
+    margin-top: 0.5rem;
+}
+
+.modern-red-style .modern-form {
+    background: #FFE4E4;
+    border-radius: 15px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+}
+
+.modern-red-style .modern-form input,
+.modern-red-style .modern-form textarea {
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 2px solid #FF0000;
+    border-radius: 10px;
+    background: white;
+}
+
+.modern-red-style .modern-form textarea {
+    height: 100px;
+    resize: none;
+}
+
+.modern-red-style .modern-form button {
+    background: #FF0000;
+    color: white;
+    border: none;
+    padding: 1rem;
+    border-radius: 10px;
+    width: 100%;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.modern-red-style .modern-form button:hover {
+    background: #CC0000;
+}
+
+.modern-red-style .footer-section {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.modern-red-style .heart-icon {
+    color: #FF0000;
+    font-size: 2rem;
+    margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+    .invitation-preview {
+        max-width: 350px;
+    }
+
+    .phone-frame {
+        border-radius: 30px;
+        padding: 10px;
+    }
+
+    .phone-screen {
+        border-radius: 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .invitation-preview {
+        max-width: 100%;
+        padding: 0 1rem;
+    }
+
+    .phone-frame {
+        border-radius: 20px;
+        padding: 8px;
+    }
+
+    .phone-screen {
+        border-radius: 15px;
+    }
+
+    .example-content {
+        padding: 4rem 0.5rem;
+    }
+}
+
+/* Анимации для переходов между слайдами */
+.slide-transition {
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.slide-enter {
+    transform: translateX(100%);
+    opacity: 0;
+}
+
+.slide-enter-active {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.slide-exit {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.slide-exit-active {
+    transform: translateX(-100%);
+    opacity: 0;
+}
+
+/* Стили для изображений */
+.invitation-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin: 1rem 0;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.invitation-image:hover {
+    transform: scale(1.02);
+}
+
+/* Улучшенные стили форм */
+.rsvp-form input,
+.rsvp-form button {
+    transition: all 0.3s ease;
+}
+
+.rsvp-form input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 2px rgba(158, 42, 43, 0.1);
+}
+
+.rsvp-form button {
+    position: relative;
+    overflow: hidden;
+}
+
+.rsvp-form button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.rsvp-form button:hover::after {
+    width: 300%;
+    height: 300%;
+}
+
+/* Минималистичный стиль */
+.minimalist-style {
+    --primary-color: #1a1a1a;
+    --secondary-color: #4a4a4a;
+    --accent-color: #e0e0e0;
+    --background-color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.minimalist-style .phone-screen {
+    background-color: var(--background-color);
+    color: var(--primary-color);
+    padding: 2rem;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.minimalist-style .header-section {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.minimalist-style h1 {
+    font-size: 1.8rem;
+    font-weight: 300;
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
+}
+
+.minimalist-style .date {
+    font-size: 1.2rem;
+    color: var(--secondary-color);
+    font-weight: 300;
+}
+
+.minimalist-style .divider {
+    color: var(--accent-color);
+    text-align: center;
+    margin: 1.5rem 0;
+    font-size: 1.2rem;
+}
+
+.minimalist-style .invitation-text {
+    text-align: center;
+    line-height: 1.6;
+    font-size: 1rem;
+    color: var(--secondary-color);
+    padding: 0 1rem;
+}
+
+.minimalist-style .details-section {
+    margin: 2rem 0;
+}
+
+.minimalist-style .detail-block {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.minimalist-style h3 {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.minimalist-style .detail-block p {
+    margin: 0.3rem 0;
+    color: var(--secondary-color);
+    font-size: 0.9rem;
+}
+
+.minimalist-style .dress-code {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.minimalist-style .color-palette {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.minimalist-style .color {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid var(--accent-color);
+}
+
+.minimalist-style .color.black {
+    background-color: #000000;
+}
+
+.minimalist-style .color.white {
+    background-color: #ffffff;
+}
+
+.minimalist-style .rsvp-section {
+    margin: 2rem 0;
+}
+
+.minimalist-style .minimalist-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.minimalist-style .minimalist-form input[type="text"],
+.minimalist-style .minimalist-form input[type="tel"],
+.minimalist-style .minimalist-form textarea {
+    padding: 0.8rem;
+    border: 1px solid var(--accent-color);
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 0.9rem;
+    transition: border-color 0.3s ease;
+}
+
+.minimalist-style .minimalist-form input:focus,
+.minimalist-style .minimalist-form textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.minimalist-style .checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.minimalist-style .checkbox-group label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+.minimalist-style .minimalist-form button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 1rem;
+    font-family: inherit;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.minimalist-style .minimalist-form button:hover {
+    background-color: var(--secondary-color);
+}
+
+.minimalist-style .footer-section {
+    text-align: center;
+    margin-top: 3rem;
+    font-style: italic;
+    color: var(--secondary-color);
+}
+
+.minimalist-style .footer-section p {
+    margin: 0.3rem 0;
+}
+
+/* Анимация появления */
+.minimalist-style .phone-screen {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 0.8s ease forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Адаптивность */
+@media (max-width: 480px) {
+    .minimalist-style .phone-screen {
+        padding: 1.5rem;
+    }
+
+    .minimalist-style h1 {
+        font-size: 1.5rem;
+    }
+
+    .minimalist-style .date {
+        font-size: 1rem;
+    }
+
+    .minimalist-style .invitation-text {
+        font-size: 0.9rem;
+    }
+} 

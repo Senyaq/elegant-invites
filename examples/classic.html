@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Элегантная классика - Invity</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="example-styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Montserrat:wght@300;400;500&family=Italiana&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="example-page">
+    <nav class="example-nav">
+        <div class="container">
+            <a href="../index.html" class="back-link">
+                <i class="fas fa-arrow-left"></i> Вернуться на главную
+            </a>
+        </div>
+    </nav>
+
+    <main class="example-content">
+        <div class="invitation-preview">
+            <div class="phone-frame">
+                <div class="phone-screen">
+                    <div class="invitation-slides">
+                        <div class="slide slide-transition">
+                            <div class="slide-content classic-style">
+                                <h1>Анастасия & Владимир</h1>
+                                <div class="bow-illustration">
+                                    <img src="../images/bow.svg" alt="Декоративный бант" class="invitation-image">
+                                </div>
+                                <div class="date">25.09.2024</div>
+                                <div class="location">
+                                    <h2>Время и место торжества</h2>
+                                    <p>Дорогие гости!</p>
+                                    <p>Мы будем ждать вас по адресу:<br>
+                                    Московская область, Мытищи усадьба "Архангельское", 1</p>
+                                    <img src="../images/venue.jpg" alt="Место проведения" class="invitation-image">
+                                </div>
+                                <div class="timeline">
+                                    <h2>Программа</h2>
+                                    <div class="timeline-item">
+                                        <span class="time">12:00</span>
+                                        <span class="event">Сбор гостей</span>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <span class="time">13:00</span>
+                                        <span class="event">Церемония</span>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <span class="time">14:00</span>
+                                        <span class="event">Банкет</span>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <span class="time">18:00</span>
+                                        <span class="event">Вечеринка</span>
+                                    </div>
+                                </div>
+                                <div class="dress-code">
+                                    <h2>Дресс-код</h2>
+                                    <p>Будем признательны, если при выборе наряда вы поддержите цветовую гамму нашего праздника</p>
+                                    <div class="color-palette">
+                                        <span class="color burgundy" title="Бордовый"></span>
+                                        <span class="color beige" title="Бежевый"></span>
+                                        <span class="color black" title="Черный"></span>
+                                        <span class="color gold" title="Золотой"></span>
+                                        <span class="color pink" title="Розовый"></span>
+                                    </div>
+                                </div>
+                                <div class="rsvp-form">
+                                    <h2>Подтвердите присутствие</h2>
+                                    <form id="rsvpForm">
+                                        <input type="text" placeholder="Имя" required>
+                                        <div class="checkbox-group">
+                                            <label>
+                                                <input type="checkbox" name="attendance" value="yes">
+                                                Я приду
+                                            </label>
+                                            <label>
+                                                <input type="checkbox" name="attendance" value="no">
+                                                Я не приду
+                                            </label>
+                                        </div>
+                                        <button type="submit">Отправить</button>
+                                    </form>
+                                </div>
+                                <div class="signature">
+                                    <p>Мы ждем вас!</p>
+                                    <p>А & В</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+    <script>
+        // Плавная анимация при загрузке
+        document.addEventListener('DOMContentLoaded', function() {
+            document.body.classList.add('loaded');
+        });
+
+        // Обработка формы
+        document.getElementById('rsvpForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const button = this.querySelector('button');
+            button.innerHTML = 'Отправлено!';
+            button.disabled = true;
+            setTimeout(() => {
+                button.innerHTML = 'Отправить';
+                button.disabled = false;
+            }, 2000);
+        });
+
+        // Обработка чекбоксов (только один может быть выбран)
+        const checkboxes = document.querySelectorAll('input[name="attendance"]');
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                checkboxes.forEach(cb => {
+                    if (cb !== this) cb.checked = false;
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

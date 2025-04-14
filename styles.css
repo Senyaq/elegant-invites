@@ -1,9 +1,10 @@
 :root {
-    --color-primary: #F5B6A3;    /* Персиковый */
-    --color-secondary: #E6E6FA;  /* Лавандовый */
-    --color-text: #4A4A4A;\t   /* Тёмно-серый */
-    --color-background: #FAF9F8; /* Светлый беж */
-    --color-accent: #D4B8B3;     /* Пыльная роза */
+    --color-primary: #9E2A2B;    /* Бордовый */
+    --color-secondary: #F9F7F3;  /* Светлый беж */
+    --color-text: #333333;       /* Тёмно-серый */
+    --color-background: #F5F5F5; /* Светло-серый */
+    --color-accent: #E09F3E;     /* Золотистый */
+    --color-overlay: rgba(158, 42, 43, 0.9); /* Полупрозрачный бордовый */
 }
 
 * {
@@ -17,10 +18,17 @@ body {
     color: var(--color-text);
     line-height: 1.6;
     background-color: var(--color-background);
+    background-image: 
+        linear-gradient(45deg, #f5f5f5 25%, transparent 25%),
+        linear-gradient(-45deg, #f5f5f5 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #f5f5f5 75%),
+        linear-gradient(-45deg, transparent 75%, #f5f5f5 75%);
+    background-size: 20px 20px;
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
 }
 
 h1, h2 {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Italiana', serif;
     color: var(--color-text);
 }
 
@@ -37,20 +45,24 @@ h1, h2 {
     align-items: center;
     justify-content: center;
     text-align: center;
-    background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-primary) 100%);
+    background: linear-gradient(135deg, var(--color-primary) 0%, #4A0404 100%);
     padding: 2rem;
 }
 
 .hero h1 {
-    font-size: 4rem;
+    font-size: 7rem;
     margin-bottom: 1rem;
     color: white;
+    letter-spacing: 0.2em;
+    font-weight: 400;
+    text-transform: uppercase;
 }
 
 .hero .subtitle {
     font-size: 1.5rem;
     margin-bottom: 2rem;
     color: white;
+    font-weight: 300;
 }
 
 .cta-button {
@@ -93,37 +105,110 @@ h1, h2 {
 /* Examples Section */
 .examples {
     padding: 5rem 0;
-    background-color: var(--color-background);
+    background-color: var(--color-secondary);
 }
 
 .examples h2 {
     text-align: center;
     font-size: 2.5rem;
     margin-bottom: 3rem;
+    letter-spacing: 0.1em;
 }
 
 .gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
     padding: 0 1rem;
 }
 
 .gallery-item {
-    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
 }
 
-.placeholder-image {
+.invitation-card {
+    position: relative;
     width: 100%;
-    padding-bottom: 100%;
-    background-color: var(--color-secondary);
-    border-radius: 10px;
-    margin-bottom: 1rem;
+    padding-bottom: 150%;
+    overflow: hidden;
+}
+
+.invitation-card img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.card-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--color-overlay);
+    color: white;
+    padding: 2rem;
+    transform: translateY(100%);
+    transition: transform 0.5s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.card-overlay h3 {
+    font-family: 'Italiana', serif;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: white;
+}
+
+.card-overlay p {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.view-more {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
+}
+
+.view-more i {
     transition: transform 0.3s ease;
 }
 
-.gallery-item:hover .placeholder-image {
+.gallery-item:hover .view-more {
+    opacity: 1;
+}
+
+.gallery-item:hover .view-more i {
+    transform: translateX(5px);
+}
+
+.gallery-item:hover {
     transform: translateY(-5px);
+}
+
+.gallery-item:hover .card-overlay {
+    transform: translateY(0);
+}
+
+.gallery-item:hover .invitation-card img {
+    transform: scale(1.1);
 }
 
 /* Contact Section */
@@ -158,8 +243,27 @@ h1, h2 {
 }
 
 .form-group textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid var(--color-accent);
+    border-radius: 5px;
+    font-family: 'Montserrat', sans-serif;
     height: 150px;
     resize: vertical;
+    line-height: 1.6;
+    font-size: 1rem;
+    color: var(--color-text);
+}
+
+.form-group textarea::placeholder {
+    color: rgba(51, 51, 51, 0.7);
+    font-style: italic;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.form-group textarea:focus::placeholder {
+    color: rgba(51, 51, 51, 0.4);
 }
 
 .contact-form button {
@@ -177,6 +281,10 @@ h1, h2 {
     background-color: var(--color-accent);
 }
 
+.contact-form button:active {
+    transform: scale(0.98);
+}
+
 .social-links {
     display: flex;
     justify-content: center;
@@ -190,14 +298,6 @@ h1, h2 {
     transition: color 0.3s ease;
 }
 
-.contact-form button:hover {
-    background-color: var(--color-accent);
-}
-
-.contact-form button:active {
-    transform: scale(0.98);
-}
-
 .social-link:hover {
     color: var(--color-primary);
 }
@@ -205,7 +305,7 @@ h1, h2 {
 /* Responsive Design */
 @media (max-width: 768px) {
     .hero h1 {
-        font-size: 3rem;
+        font-size: 5rem;
     }
 
     .hero .subtitle {
@@ -213,13 +313,13 @@ h1, h2 {
     }
 
     .gallery {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     }
 }
 
 @media (max-width: 480px) {
     .hero h1 {
-        font-size: 2.5rem;
+        font-size: 3.5rem;
     }
 
     .hero .subtitle {
@@ -232,5 +332,62 @@ h1, h2 {
 
     h2 {
         font-size: 2rem;
+    }
+
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+}
+
+.form-message {
+    margin-top: 1rem;
+    padding: 0.5rem;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.form-message.success {
+    color: green;
+    background-color: rgba(0, 255, 0, 0.1);
+}
+
+.form-message.error {
+    color: red;
+    background-color: rgba(255, 0, 0, 0.1);
+}
+
+.contact-message {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.contact-message p {
+    margin: 0.5rem 0;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--color-text);
+}
+
+.contact-message p:first-child {
+    font-weight: 500;
+    font-size: 1.2rem;
+}
+
+@media (max-width: 768px) {
+    .contact-message {
+        padding: 1rem;
+    }
+    
+    .contact-message p {
+        font-size: 1rem;
+    }
+    
+    .contact-message p:first-child {
+        font-size: 1.1rem;
     }
 }

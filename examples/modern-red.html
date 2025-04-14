@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Red - Invity</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="example-styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Montserrat:wght@300;400;500&family=Italiana&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="example-page">
+    <nav class="example-nav">
+        <div class="container">
+            <a href="../index.html" class="back-link">
+                <i class="fas fa-arrow-left"></i> Вернуться на главную
+            </a>
+        </div>
+    </nav>
+
+    <main class="example-content">
+        <div class="invitation-preview">
+            <div class="phone-frame">
+                <div class="phone-screen">
+                    <div class="invitation-slides">
+                        <div class="slide slide-transition">
+                            <div class="slide-content modern-red-style">
+                                <div class="header-section">
+                                    <h1>САЙТ-ПРИГЛАШЕНИЕ<br>НА СВАДЬБУ</h1>
+                                </div>
+                                
+                                <div class="couple-section">
+                                    <div class="photo-block">
+                                        <img src="../images/couple1.jpg" alt="Фото пары" class="invitation-image">
+                                        <div class="text-overlay">
+                                            <h2>Эти двое решили жениться!</h2>
+                                            <p>и решили позвать тебя ❤</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="info-section">
+                                    <div class="info-block when">
+                                        <h2>Когда?</h2>
+                                        <div class="date-block">
+                                            <span class="date">14.09.24</span>
+                                            <span class="time">в 15:00</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="info-block where">
+                                        <h2>Где?</h2>
+                                        <img src="../images/venue-modern.jpg" alt="Место проведения" class="invitation-image">
+                                        <p class="address">Октябрьская, 465/2</p>
+                                        <button class="map-button">Показать на карте</button>
+                                    </div>
+                                </div>
+
+                                <div class="details-section">
+                                    <h2>Что нам дарить?</h2>
+                                    <div class="gift-info">
+                                        <p>Только деньги!</p>
+                                        <p class="note">никаких сервизов</p>
+                                    </div>
+
+                                    <div class="dress-code">
+                                        <h2>Дресс-код</h2>
+                                        <p>ТОТАЛ-БЛЭК</p>
+                                        <div class="dress-note">
+                                            <p>(Модные тренды не считаются!)</p>
+                                            <p>(А ещё никаких животных и детей)</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="rsvp-section">
+                                    <h2>Заполни эту анкету</h2>
+                                    <p>Чтобы мы знали, что ты хочешь настоять и выпивать</p>
+                                    <form id="rsvpForm" class="modern-form">
+                                        <input type="text" placeholder="Имя" required>
+                                        <input type="tel" placeholder="Телефон" required>
+                                        <textarea placeholder="Пожелания по меню"></textarea>
+                                        <button type="submit">Заполнить</button>
+                                    </form>
+                                </div>
+
+                                <div class="footer-section">
+                                    <p>До встречи!</p>
+                                    <div class="heart-icon">❤</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.body.classList.add('loaded');
+        });
+
+        document.getElementById('rsvpForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const button = this.querySelector('button');
+            button.innerHTML = 'Отправлено!';
+            button.disabled = true;
+            setTimeout(() => {
+                button.innerHTML = 'Заполнить';
+                button.disabled = false;
+            }, 2000);
+        });
+    </script>
+</body>
+</html> 

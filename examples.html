@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Примеры работ | Elegant Invites</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Italiana&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #9E2A2B;
+            --color-secondary: #F9F7F3;
+            --color-text: #333333;
+            --color-background: #F5F5F5;
+            --color-accent: #E09F3E;
+            --color-overlay: rgba(158, 42, 43, 0.9);
+        }
+
+        .examples-section {
+            padding: 4rem 2rem;
+            background-color: var(--color-secondary);
+        }
+
+        .examples-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .example-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .example-preview {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .card-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--color-overlay);
+            color: white;
+            padding: 2rem;
+            transform: translateY(100%);
+            transition: transform 0.5s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .card-overlay h3 {
+            font-family: 'Italiana', serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+
+        .card-overlay p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .example-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .example-card:hover .card-overlay {
+            transform: translateY(0);
+        }
+
+        .example-card:hover .example-preview {
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .examples-section {
+                padding: 2rem 1rem;
+            }
+
+            .examples-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 1.5rem;
+            }
+
+            .example-preview {
+                height: 350px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .examples-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="examples-section">
+        <div class="examples-grid">
+            <div class="example-card">
+                <img src="images/burgundy-minimal.jpg" alt="Бордовый минимализм" class="example-preview">
+                <div class="card-overlay">
+                    <h3>Бордовый минимализм</h3>
+                    <p>Элегантный дизайн с каллиграфией и бордовыми акцентами</p>
+                    <p>от 3 500₽</p>
+                </div>
+            </div>
+
+            <div class="example-card">
+                <img src="images/fun-red.jpg" alt="Веселое красное" class="example-preview">
+                <div class="card-overlay">
+                    <h3>Веселое красное</h3>
+                    <p>Яркий дизайн с фотографиями и юмором</p>
+                    <p>от 3 000₽</p>
+                </div>
+            </div>
+
+            <div class="example-card">
+                <img src="images/pink-modern.jpg" alt="Розовый модерн" class="example-preview">
+                <div class="card-overlay">
+                    <h3>Розовый модерн</h3>
+                    <p>Современный дизайн в розовых тонах</p>
+                    <p>от 3 500₽</p>
+                </div>
+            </div>
+
+            <div class="example-card">
+                <img src="images/classic-red.jpg" alt="Классический красный" class="example-preview">
+                <div class="card-overlay">
+                    <h3>Классический красный</h3>
+                    <p>Элегантный дизайн с черно-белыми фото</p>
+                    <p>от 4 000₽</p>
+                </div>
+            </div>
+
+            <div class="example-card">
+                <img src="images/childhood.jpg" alt="Детские фото" class="example-preview">
+                <div class="card-overlay">
+                    <h3>История любви</h3>
+                    <p>Трогательный дизайн с детскими фотографиями</p>
+                    <p>от 3 500₽</p>
+                </div>
+            </div>
+
+            <div class="example-card">
+                <img src="images/taplink-minimal.jpg" alt="Taplink минимализм" class="example-preview">
+                <div class="card-overlay">
+                    <h3>Taplink минимализм</h3>
+                    <p>Современный минималистичный дизайн для Taplink</p>
+                    <p>от 3 000₽</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html> 

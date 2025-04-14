@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Минималистичное приглашение | Elegant Invites</title>
+    <link rel="stylesheet" href="example-styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="example-page minimalist-style">
+        <nav class="example-nav">
+            <a href="../index.html" class="back-link">← Вернуться на главную</a>
+        </nav>
+        
+        <div class="example-content">
+            <div class="invitation-preview">
+                <div class="phone-frame">
+                    <div class="phone-screen">
+                        <header class="header-section">
+                            <h1>Александр & Екатерина</h1>
+                            <p class="date">15.08.2024</p>
+                        </header>
+
+                        <section class="main-section">
+                            <div class="divider">━━━</div>
+                            <p class="invitation-text">
+                                С большой радостью приглашаем вас разделить с нами особенный день - день нашей свадьбы
+                            </p>
+                            <div class="divider">━━━</div>
+                        </section>
+
+                        <section class="details-section">
+                            <div class="detail-block">
+                                <h3>Церемония</h3>
+                                <p>16:00</p>
+                                <p>Дворец бракосочетания №1</p>
+                                <p>Английская набережная, 28</p>
+                            </div>
+
+                            <div class="detail-block">
+                                <h3>Праздничный ужин</h3>
+                                <p>18:00</p>
+                                <p>Ресторан "Белый"</p>
+                                <p>Петровская набережная, 15</p>
+                            </div>
+                        </section>
+
+                        <section class="dress-code">
+                            <h3>Дресс-код</h3>
+                            <p>Black & White</p>
+                            <div class="color-palette">
+                                <div class="color black" title="Черный"></div>
+                                <div class="color white" title="Белый"></div>
+                            </div>
+                        </section>
+
+                        <section class="rsvp-section">
+                            <h3>Подтвердите присутствие</h3>
+                            <form class="minimalist-form">
+                                <input type="text" placeholder="Ваше имя" required>
+                                <input type="tel" placeholder="Телефон" required>
+                                <div class="checkbox-group">
+                                    <label>
+                                        <input type="checkbox" name="attendance">
+                                        <span>Буду присутствовать</span>
+                                    </label>
+                                </div>
+                                <textarea placeholder="Ваши пожелания или комментарии"></textarea>
+                                <button type="submit">Отправить</button>
+                            </form>
+                        </section>
+
+                        <footer class="footer-section">
+                            <p>С любовью,</p>
+                            <p>Александр и Екатерина</p>
+                        </footer>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.body.classList.add('loaded');
+        });
+
+        const form = document.querySelector('.minimalist-form');
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Форма отправлена!');
+            form.reset();
+        });
+    </script>
+</body>
+</html> 
