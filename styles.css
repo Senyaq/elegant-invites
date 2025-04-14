@@ -407,3 +407,54 @@ h1, h2 {
         font-size: 1.1rem;
     }
 }
+
+.animated-text-container {
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1.5rem 0;
+}
+
+.animated-text {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    color: white;
+    text-align: center;
+    opacity: 0;
+    position: absolute;
+    transition: opacity 1s ease-in-out;
+}
+
+.animated-text.fade-in {
+    opacity: 1;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+.fade-in {
+    animation: fadeIn 1s ease-in-out forwards;
+}
+
+.fade-out {
+    animation: fadeOut 1s ease-in-out forwards;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+@media (max-width: 768px) {
+    .animated-text {
+        font-size: 1.5rem;
+        padding: 0 1rem;
+    }
+}

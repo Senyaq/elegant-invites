@@ -9,6 +9,33 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // Анимация текста
+    const phrases = [
+        'Красивое начало вашей истории — с первого взгляда',
+        'Ваша история начинается красиво',
+        'Приглашение, в которое влюбляются',
+        'Первое слово вашей свадьбы — digital'
+    ];
+
+    const animatedTextContainer = document.querySelector('.animated-text-container');
+    let currentIndex = 0;
+
+    function updateText() {
+        const currentText = animatedTextContainer.querySelector('.animated-text');
+        currentText.classList.remove('fade-in');
+        currentText.classList.add('fade-out');
+
+        setTimeout(() => {
+            currentIndex = (currentIndex + 1) % phrases.length;
+            currentText.textContent = phrases[currentIndex];
+            currentText.classList.remove('fade-out');
+            currentText.classList.add('fade-in');
+        }, 1000);
+    }
+
+    // Запускаем смену текста каждые 4 секунды
+    setInterval(updateText, 4000);
+
     // Обработка отправки формы
     const contactForm = document.querySelector('.contact-form');
     if (contactForm) {
