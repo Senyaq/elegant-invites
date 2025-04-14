@@ -3,38 +3,66 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                const startPosition = window.pageYOffset;
+                const distance = targetPosition - startPosition;
+                const duration = 2000; // 2 секунды
+                let start = null;
+
+                function animation(currentTime) {
+                    if (start === null) start = currentTime;
+                    const timeElapsed = currentTime - start;
+                    const progress = Math.min(timeElapsed / duration, 1);
+                    
+                    // Функция плавности (easeInOutQuad)
+                    const ease = progress => {
+                        return progress < 0.5
+                            ? 2 * progress * progress
+                            : 1 - Math.pow(-2 * progress + 2, 2) / 2;
+                    };
+
+                    window.scrollTo(0, startPosition + (distance * ease(progress)));
+
+                    if (timeElapsed < duration) {
+                        requestAnimationFrame(animation);
+                    }
+                }
+
+                requestAnimationFrame(animation);
+            }
         });
     });
 
     // Анимация текста
     const phrases = [
-        'Красивое начало вашей истории — с первого взгляда',
-        'Ваша история начинается красиво',
-        'Приглашение, в которое влюбляются',
-        'Первое слово вашей свадьбы — digital'
+        "Красивое начало вашей истории — с первого взгляда",
+        "Ваша история начинается красиво",
+        "Приглашение, в которое влюбляются",
+        "Первое слово вашей свадьбы — digital"
     ];
-
-    const animatedTextContainer = document.querySelector('.animated-text-container');
+    
+    const animatedText = document.querySelector('.animated-text');
     let currentIndex = 0;
-
-    function updateText() {
-        const currentText = animatedTextContainer.querySelector('.animated-text');
-        currentText.classList.remove('fade-in');
-        currentText.classList.add('fade-out');
-
+    
+    function changeText() {
+        animatedText.classList.remove('fade-in');
+        
         setTimeout(() => {
             currentIndex = (currentIndex + 1) % phrases.length;
-            currentText.textContent = phrases[currentIndex];
-            currentText.classList.remove('fade-out');
-            currentText.classList.add('fade-in');
-        }, 1000);
+            animatedText.textContent = phrases[currentIndex];
+            
+            // Небольшая пауза перед появлением нового текста
+            setTimeout(() => {
+                animatedText.classList.add('fade-in');
+            }, 200);
+        }, 800);
     }
-
-    // Запускаем смену текста каждые 4 секунды
-    setInterval(updateText, 4000);
+    
+    setInterval(changeText, 4000);
 
     // Обработка отправки формы
     const contactForm = document.querySelector('.contact-form');

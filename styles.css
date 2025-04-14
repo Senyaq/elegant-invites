@@ -50,20 +50,22 @@ h1, h2 {
 }
 
 .hero h1 {
-    font-size: 4.5rem;
-    margin-bottom: 1rem;
+    font-size: 6rem;
+    margin-bottom: 2rem;
     font-family: 'Italiana', serif;
     color: white;
     text-align: center;
+    letter-spacing: 0.15em;
+    width: 100%;
 }
 
 .hero h1 .by-ks {
-    font-size: 3rem;
-    display: inline-block;
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    color: var(--color-accent);
-    margin-left: 0.5rem;
+    font-size: 6rem;
+    font-family: 'Italiana', serif;
+    color: white;
+    font-style: normal;
+    letter-spacing: 0.15em;
+    margin-left: 0.2em;
 }
 
 .hero .subtitle {
@@ -81,13 +83,20 @@ h1, h2 {
     color: var(--color-text);
     text-decoration: none;
     border-radius: 30px;
-    transition: transform 0.3s ease;
+    transition: all 0.3s ease;
     font-weight: 500;
     font-family: 'Montserrat', sans-serif;
+    margin-top: 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .cta-button:hover {
-    transform: translateY(-3px);
+    transform: scale(1.03);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.cta-button:active {
+    transform: scale(0.98);
 }
 
 /* About Section */
@@ -281,7 +290,7 @@ h1, h2 {
     color: rgba(51, 51, 51, 0.4);
 }
 
-.contact-form button {
+.submit-button {
     background-color: var(--color-primary);
     color: white;
     border: none;
@@ -289,16 +298,34 @@ h1, h2 {
     border-radius: 30px;
     cursor: pointer;
     font-weight: 500;
-    transition: background-color 0.3s ease;
     font-family: 'Montserrat', sans-serif;
+    transition: background-color 0.3s ease;
 }
 
-.contact-form button:hover {
-    background-color: var(--color-accent);
+.submit-button:hover {
+    background-color: #8a2526;
 }
 
-.contact-form button:active {
+.submit-button:active {
     transform: scale(0.98);
+}
+
+.form-message {
+    margin-top: 1rem;
+    padding: 0.5rem;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.form-message.success {
+    color: green;
+    background-color: rgba(0, 255, 0, 0.1);
+}
+
+.form-message.error {
+    color: red;
+    background-color: rgba(255, 0, 0, 0.1);
 }
 
 .social-links {
@@ -320,8 +347,9 @@ h1, h2 {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .hero h1 {
-        font-size: 5rem;
+    .hero h1, .hero h1 .by-ks {
+        font-size: 4rem;
+        letter-spacing: 0.1em;
     }
 
     .hero .subtitle {
@@ -353,24 +381,6 @@ h1, h2 {
     .gallery {
         grid-template-columns: 1fr;
     }
-}
-
-.form-message {
-    margin-top: 1rem;
-    padding: 0.5rem;
-    border-radius: 4px;
-    text-align: center;
-    font-size: 0.9rem;
-}
-
-.form-message.success {
-    color: green;
-    background-color: rgba(0, 255, 0, 0.1);
-}
-
-.form-message.error {
-    color: red;
-    background-color: rgba(255, 0, 0, 0.1);
 }
 
 .contact-message {
@@ -417,13 +427,16 @@ h1, h2 {
 }
 
 .animated-text {
-    font-family: var(--font-serif);
-    font-size: 2rem;
-    color: white;
-    text-align: center;
-    opacity: 0;
     position: absolute;
-    transition: opacity 1s ease-in-out;
+    width: 100%;
+    left: 0;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+    white-space: nowrap;
+    max-width: 100%;
+    text-align: center;
+    font-style: italic;
+    font-family: 'Cormorant Garamond', serif;
 }
 
 .animated-text.fade-in {
@@ -454,7 +467,25 @@ html {
 
 @media (max-width: 768px) {
     .animated-text {
-        font-size: 1.5rem;
+        font-size: clamp(1.2rem, 2.5vw, 1.8rem);
         padding: 0 1rem;
     }
+}
+
+.animated-subtitle {
+    color: white;
+    font-weight: 300;
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    text-align: center;
+    margin-bottom: 2rem;
+    min-height: 3em;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
