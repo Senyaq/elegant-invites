@@ -50,19 +50,20 @@ h1, h2 {
 }
 
 .hero h1 {
-    font-size: 4rem;
+    font-size: 4.5rem;
     margin-bottom: 1rem;
     font-family: 'Italiana', serif;
-    color: var(--color-text);
+    color: white;
     text-align: center;
 }
 
 .hero h1 .by-ks {
-    font-size: 2.5rem;
+    font-size: 3rem;
     display: inline-block;
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
     color: var(--color-accent);
+    margin-left: 0.5rem;
 }
 
 .hero .subtitle {
