@@ -49,20 +49,27 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentIndex = 0;
     
     function changeText() {
+        // Начинаем плавное исчезновение
+        animatedText.classList.add('fade-out');
         animatedText.classList.remove('fade-in');
         
+        // Ждем полного исчезновения текста
         setTimeout(() => {
+            // Меняем текст когда он полностью исчез
             currentIndex = (currentIndex + 1) % phrases.length;
             animatedText.textContent = phrases[currentIndex];
             
-            // Небольшая пауза перед появлением нового текста
+            // Делаем паузу перед появлением нового текста
             setTimeout(() => {
+                // Запускаем появление нового текста
+                animatedText.classList.remove('fade-out');
                 animatedText.classList.add('fade-in');
-            }, 200);
-        }, 800);
+            }, 500); // Пауза 500мс перед появлением
+        }, 1200); // Ждем завершения fade-out
     }
     
-    setInterval(changeText, 4000);
+    // Запускаем смену текста каждые 5 секунд (учитывая длительность анимаций)
+    setInterval(changeText, 5000);
 
     // Обработка отправки формы
     const contactForm = document.querySelector('.contact-form');
