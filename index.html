@@ -136,6 +136,16 @@
 
     <script src="script.js"></script>
     <script>
+        // Smooth scroll functionality
+        document.querySelector('.cta-button').addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetSection = document.querySelector('#examples');
+            targetSection.scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'start'
+            });
+        });
+
         // Animated text functionality
         const phrases = [
             "Приглашение, в которое влюбляются",
