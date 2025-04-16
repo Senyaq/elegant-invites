@@ -171,13 +171,17 @@
         
         // Initialize first phrase
         document.addEventListener('DOMContentLoaded', () => {
-            // Показываем первую фразу сразу
+            // Set initial text
             animatedText.textContent = phrases[0];
-            animatedText.classList.add('active');
             
-            // Запускаем цикл анимации через 3 секунды
+            // Показываем первую фразу через 3 секунды
             setTimeout(() => {
-                setInterval(changeText, 4000);
+                animatedText.classList.add('active');
+                
+                // Запускаем цикл анимации
+                setTimeout(() => {
+                    setInterval(changeText, 4000);
+                }, 4000);
             }, 3000);
         });
 
