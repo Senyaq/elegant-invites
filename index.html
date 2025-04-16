@@ -171,18 +171,18 @@
         
         // Initialize first phrase
         document.addEventListener('DOMContentLoaded', () => {
-            // Set initial text and make it visible
+            // Set initial text
             animatedText.textContent = phrases[0];
             
-            // Небольшая задержка перед показом первой фразы
+            // Показываем первую фразу через 3 секунды
             setTimeout(() => {
                 animatedText.classList.add('active');
                 
-                // Start animation cycle with a delay
+                // Запускаем цикл анимации
                 setTimeout(() => {
                     setInterval(changeText, 4000);
                 }, 4000);
-            }, 100);
+            }, 3000);
         });
 
         // Modal functionality
