@@ -184,33 +184,40 @@
         // Smooth scroll functionality
         document.querySelector('.cta-button').addEventListener('click', function(e) {
             e.preventDefault();
+            
             const target = document.querySelector('#examples');
-            const targetPosition = target.getBoundingClientRect().top + window.scrollY;
-            const startPosition = window.scrollY;
+            const targetPosition = target.getBoundingClientRect().top + window.pageYOffset;
+            const startPosition = window.pageYOffset;
             const distance = targetPosition - startPosition;
-            const duration = 1500; // Увеличиваем длительность до 1.5 секунд
-            let start = null;
+            const duration = 2000;
+            let startTime = null;
 
-            function animation(currentTime) {
-                if (start === null) start = currentTime;
-                const timeElapsed = currentTime - start;
+            function easeInOutCubic(t) {
+                return t < 0.5 
+                    ? 4 * t * t * t 
+                    : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
+            }
+
+            function scroll(currentTime) {
+                if (startTime === null) {
+                    startTime = currentTime;
+                }
+
+                const timeElapsed = currentTime - startTime;
                 const progress = Math.min(timeElapsed / duration, 1);
-                
-                // Используем кубическую кривую Безье для более плавного движения
-                const ease = progress => {
-                    return progress < 0.5
-                        ? 4 * progress * progress * progress
-                        : 1 - Math.pow(-2 * progress + 2, 3) / 2;
-                };
+                const easeProgress = easeInOutCubic(progress);
 
-                window.scrollTo(0, startPosition + distance * ease(progress));
+                window.scrollTo({
+                    top: startPosition + distance * easeProgress,
+                    behavior: 'auto' // Используем 'auto' чтобы предотвратить конфликты
+                });
 
-                if (progress < 1) {
-                    requestAnimationFrame(animation);
+                if (timeElapsed < duration) {
+                    requestAnimationFrame(scroll);
                 }
             }
 
-            requestAnimationFrame(animation);
+            requestAnimationFrame(scroll);
         });
 
         // Modal functionality
