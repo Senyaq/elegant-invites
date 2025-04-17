@@ -198,7 +198,7 @@ h1, h2 {
     font-size: 1.3rem;
     font-weight: 500;
     margin-bottom: 1.2rem;
-    color: var(--color-accent);
+    color: white;
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
 }
