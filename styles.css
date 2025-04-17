@@ -132,11 +132,10 @@ h1, h2 {
 .gallery-item {
     position: relative;
     overflow: hidden;
-    border-radius: 12px;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
     cursor: pointer;
-    background-color: white;
 }
 
 .invitation-card {
@@ -203,21 +202,26 @@ h1, h2 {
     font-style: italic;
 }
 
-.gallery-item:hover {
-    transform: translateY(-8px);
+.gallery-item:hover,
+.gallery-item.active {
+    transform: translateY(-5px);
 }
 
-.gallery-item:hover .card-overlay {
+.gallery-item:hover .card-overlay,
+.gallery-item.active .card-overlay {
     opacity: 1;
 }
 
-.gallery-item:hover .invitation-card img {
-    transform: scale(1.08);
+.gallery-item:hover .card-overlay h3,
+.gallery-item:hover .card-overlay p,
+.gallery-item.active .card-overlay h3,
+.gallery-item.active .card-overlay p {
+    transform: translateY(0);
 }
 
-.gallery-item:hover .card-overlay h3,
-.gallery-item:hover .card-overlay p {
-    transform: translateY(0);
+.gallery-item:hover .invitation-card img,
+.gallery-item.active .invitation-card img {
+    transform: scale(1.08);
 }
 
 /* Contact Section */
@@ -342,6 +346,19 @@ h1, h2 {
         font-size: 1.2rem;
         margin-bottom: 1rem;
     }
+
+    .gallery-item {
+        cursor: pointer;
+    }
+    
+    .gallery-item .card-overlay {
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    
+    .gallery-item.active .card-overlay {
+        opacity: 1;
+    }
 }
 
 @media (max-width: 480px) {
@@ -376,6 +393,19 @@ h1, h2 {
 
     .card-overlay p:first-of-type {
         font-size: 1.1rem;
+    }
+
+    .gallery-item {
+        cursor: pointer;
+    }
+    
+    .gallery-item .card-overlay {
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    
+    .gallery-item.active .card-overlay {
+        opacity: 1;
     }
 }
 
@@ -474,27 +504,26 @@ h1, h2 {
 
 .animated-text {
     position: absolute;
-    width: 100%;
-    left: 0;
-    opacity: 0;
-    transition: opacity 0.8s ease, transform 0.8s ease;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     text-align: center;
-    font-style: italic;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2.5rem;
-    color: white;
-    transform: translateY(20px);
-    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    white-space: normal;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    padding-inline: 1rem;
+    width: 100%;
+    max-width: 90%;
 }
 
 .animated-text.active {
     opacity: 1;
-    transform: translateY(0);
 }
 
 .animated-text.fade-out {
     opacity: 0;
-    transform: translateY(-20px);
 }
 
 .animated-text-container {

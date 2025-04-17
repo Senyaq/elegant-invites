@@ -19,4 +19,22 @@ document.addEventListener('DOMContentLoaded', function() {
             contactForm.reset();
         });
     }
+
+    // Обработка нажатий на карточки галереи
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    const isMobile = window.innerWidth <= 768;
+
+    if (isMobile) {
+        galleryItems.forEach(item => {
+            item.addEventListener('click', () => {
+                // Сначала убираем active у других карточек
+                document.querySelectorAll('.gallery-item.active').forEach(el => {
+                    if (el !== item) el.classList.remove('active');
+                });
+
+                // Переключаем active на выбранной карточке
+                item.classList.toggle('active');
+            });
+        });
+    }
 });
