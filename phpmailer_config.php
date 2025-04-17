@@ -13,20 +13,20 @@ function sendEmail($name, $email, $message) {
         $mail->Host = 'smtp.yandex.ru';
         $mail->SMTPAuth = true;
         $mail->Username = 'arsenysvyatov@yandex.ru';
-        $mail->Password = 'YOUR_APP_PASSWORD'; // Здесь нужно будет вставить пароль приложения
+        $mail->Password = 'soksef-veqcY6-vasjuf';
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
         $mail->Port = 465;
         $mail->CharSet = 'UTF-8';
 
         // Отправитель и получатель
-        $mail->setFrom('arsenysvyatov@yandex.ru', 'Invity');
+        $mail->setFrom('arsenysvyatov@yandex.ru', 'Invite by KS');
         $mail->addAddress('arsenysvyatov@yandex.ru');
 
         // Содержимое письма
         $mail->isHTML(true);
-        $mail->Subject = 'Новое сообщение с сайта Invity';
+        $mail->Subject = 'Новое сообщение с сайта Invite by KS';
         $mail->Body = "
-            <h2>Новое сообщение с сайта Invity</h2>
+            <h2>Новое сообщение с сайта Invite by KS</h2>
             <p><strong>Имя:</strong> $name</p>
             <p><strong>Email:</strong> $email</p>
             <p><strong>Сообщение:</strong></p>
