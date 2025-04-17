@@ -136,16 +136,6 @@
 
     <script src="script.js"></script>
     <script>
-        // Smooth scroll functionality
-        document.querySelector('.cta-button').addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetSection = document.querySelector('#examples');
-            targetSection.scrollIntoView({ 
-                behavior: 'smooth',
-                block: 'start'
-            });
-        });
-
         // Animated text functionality
         const phrases = [
             "Приглашение, в которое влюбляются",
@@ -185,10 +175,18 @@
             animatedText.textContent = phrases[0];
             animatedText.classList.add('active');
             
-            // Запускаем цикл анимации через 4 секунды
+            // Запускаем цикл анимации через 1 секунду
             setTimeout(() => {
                 setInterval(changeText, 4000);
-            }, 4000);
+            }, 1000);
+        });
+
+        // Smooth scroll functionality
+        document.querySelector('.cta-button').addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector('#examples');
+            const y = target.getBoundingClientRect().top + window.scrollY;
+            window.scrollTo({ top: y, behavior: 'smooth' });
         });
 
         // Modal functionality
@@ -205,7 +203,9 @@
 
         function closeModal() {
             modal.classList.remove('active');
-            modalImg.src = '';
+            setTimeout(() => {
+                modalImg.src = '';
+            }, 300); // Очищаем src после завершения анимации
             document.body.style.overflow = '';
         }
 
