@@ -186,38 +186,14 @@
             e.preventDefault();
             
             const target = document.querySelector('#examples');
-            const targetPosition = target.getBoundingClientRect().top + window.pageYOffset;
-            const startPosition = window.pageYOffset;
-            const distance = targetPosition - startPosition;
-            const duration = 2000;
-            let startTime = null;
+            const headerOffset = 20; // Небольшой отступ сверху для комфортного просмотра
+            const elementPosition = target.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
-            function easeInOutCubic(t) {
-                return t < 0.5 
-                    ? 4 * t * t * t 
-                    : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
-            }
-
-            function scroll(currentTime) {
-                if (startTime === null) {
-                    startTime = currentTime;
-                }
-
-                const timeElapsed = currentTime - startTime;
-                const progress = Math.min(timeElapsed / duration, 1);
-                const easeProgress = easeInOutCubic(progress);
-
-                window.scrollTo({
-                    top: startPosition + distance * easeProgress,
-                    behavior: 'auto' // Используем 'auto' чтобы предотвратить конфликты
-                });
-
-                if (timeElapsed < duration) {
-                    requestAnimationFrame(scroll);
-                }
-            }
-
-            requestAnimationFrame(scroll);
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: "smooth"
+            });
         });
 
         // Modal functionality
