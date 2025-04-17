@@ -510,8 +510,12 @@ h1, h2 {
     }
 }
 
-html {
+/* Smooth scroll for anchor links except .cta-button */
+a[href^="#"]:not(.cta-button) {
     scroll-behavior: smooth;
+}
+
+html {
     scroll-padding-top: 20px;
     overflow-y: scroll;
     overscroll-behavior-y: none;

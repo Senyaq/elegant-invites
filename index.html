@@ -186,10 +186,10 @@
             e.preventDefault();
             
             const target = document.querySelector('#examples');
-            const startPosition = window.pageYOffset;
+            const startPosition = window.pageYOffset || document.documentElement.scrollTop;
             const targetPosition = target.getBoundingClientRect().top + startPosition;
             const distance = targetPosition - startPosition;
-            const duration = 2000; // Увеличиваем до 2 секунд
+            const duration = 2000;
             let start = null;
 
             function easeInOutQuint(t) {
@@ -201,10 +201,7 @@
                 const progress = Math.min((timestamp - start) / duration, 1);
                 const easeProgress = easeInOutQuint(progress);
                 
-                window.scrollTo({
-                    top: startPosition + (distance * easeProgress),
-                    behavior: 'auto'
-                });
+                window.scrollTo(0, Math.round(startPosition + (distance * easeProgress)));
 
                 if (progress < 1) {
                     requestAnimationFrame(step);
