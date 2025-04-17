@@ -101,7 +101,7 @@
     </section>
 
     <!-- Modal Window -->
-    <div class="modal">
+    <div class="modal" id="modal">
         <div class="modal-overlay"></div>
         <div class="modal-content">
             <button class="modal-close">&times;</button>
@@ -162,7 +162,7 @@
             if (isAnimating) return;
             isAnimating = true;
 
-            // Плавно скрываем
+            // Плавно скрываем текущий текст вверх
             animatedText.classList.remove('active');
             animatedText.classList.add('fade-out');
 
@@ -171,7 +171,7 @@
                 currentIndex = (currentIndex + 1) % phrases.length;
                 animatedText.textContent = phrases[currentIndex];
 
-                // Убираем fade-out и добавляем активный класс
+                // Убираем fade-out и добавляем active для появления снизу
                 animatedText.classList.remove('fade-out');
                 animatedText.classList.add('active');
                 
@@ -179,24 +179,20 @@
             }, 800);
         }
         
-        // Initialize first phrase
+        // Initialize animation
         document.addEventListener('DOMContentLoaded', () => {
-            // Set initial text
+            // Показываем первую фразу сразу
             animatedText.textContent = phrases[0];
+            animatedText.classList.add('active');
             
-            // Показываем первую фразу через 3 секунды
+            // Запускаем цикл анимации через 4 секунды
             setTimeout(() => {
-                animatedText.classList.add('active');
-                
-                // Запускаем цикл анимации
-                setTimeout(() => {
-                    setInterval(changeText, 4000);
-                }, 4000);
-            }, 3000);
+                setInterval(changeText, 4000);
+            }, 4000);
         });
 
         // Modal functionality
-        const modal = document.getElementById('modal');
+        const modal = document.querySelector('.modal');
         const modalImg = document.getElementById('modalImage');
         const closeBtn = document.querySelector('.modal-close');
         const modalOverlay = document.querySelector('.modal-overlay');
