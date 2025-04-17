@@ -186,14 +186,32 @@
             e.preventDefault();
             
             const target = document.querySelector('#examples');
-            const headerOffset = 20; // Небольшой отступ сверху для комфортного просмотра
-            const elementPosition = target.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+            const startPosition = window.pageYOffset;
+            const targetPosition = target.getBoundingClientRect().top + startPosition;
+            const distance = targetPosition - startPosition;
+            const duration = 2000; // Увеличиваем до 2 секунд
+            let start = null;
 
-            window.scrollTo({
-                top: offsetPosition,
-                behavior: "smooth"
-            });
+            function easeInOutQuint(t) {
+                return t < 0.5 ? 16 * t * t * t * t * t : 1 + 16 * (--t) * t * t * t * t;
+            }
+
+            function step(timestamp) {
+                if (!start) start = timestamp;
+                const progress = Math.min((timestamp - start) / duration, 1);
+                const easeProgress = easeInOutQuint(progress);
+                
+                window.scrollTo({
+                    top: startPosition + (distance * easeProgress),
+                    behavior: 'auto'
+                });
+
+                if (progress < 1) {
+                    requestAnimationFrame(step);
+                }
+            }
+
+            requestAnimationFrame(step);
         });
 
         // Modal functionality

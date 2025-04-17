@@ -29,6 +29,7 @@ body {
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    will-change: scroll-position;
 }
 
 h1, h2 {
@@ -110,6 +111,7 @@ h1, h2 {
 .examples {
     padding: 5rem 0;
     background-color: var(--color-secondary);
+    scroll-margin-top: 20px;
 }
 
 .examples h2 {
@@ -510,5 +512,7 @@ h1, h2 {
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 20px; /* Соответствует headerOffset из JS */
+    scroll-padding-top: 20px;
+    overflow-y: scroll;
+    overscroll-behavior-y: none;
 }
