@@ -243,17 +243,30 @@ h1, h2 {
 }
 
 .form-group input,
-.form-group textarea {
+.form-group textarea,
+.contact-form input,
+.contact-form textarea {
     width: 100%;
     padding: 1rem;
     border: 1px solid var(--color-accent);
     border-radius: 5px;
     font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    color: var(--color-text);
+    background-color: white;
+    transition: border-color 0.3s ease;
 }
 
-.form-group textarea {
+.contact-form textarea {
     height: 150px;
     resize: vertical;
+    line-height: 1.6;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
 }
 
 .contact-form button {
@@ -264,11 +277,14 @@ h1, h2 {
     border-radius: 30px;
     cursor: pointer;
     font-weight: 500;
-    transition: background-color 0.3s ease;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    width: 100%;
 }
 
 .contact-form button:hover {
     background-color: var(--color-accent);
+    transform: translateY(-2px);
 }
 
 .contact-form button:active {
