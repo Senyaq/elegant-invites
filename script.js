@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM загружен, инициализация скриптов...');
+    
     // Плавная прокрутка для навигации
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
@@ -22,7 +24,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Carousel functionality with swipe support
     function initializeCarousel(carousel) {
+        console.log('Инициализация карусели...');
         const images = carousel.querySelectorAll('img, .website-preview');
+        console.log(`Найдено изображений в карусели: ${images.length}`);
+        
         const prevBtn = carousel.querySelector('.carousel-prev');
         const nextBtn = carousel.querySelector('.carousel-next');
         let currentIndex = 0;
@@ -30,6 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
         let isSwiping = false;
 
         function showSlide(index) {
+            console.log(`Показ слайда ${index + 1} из ${images.length}`);
             images.forEach((img, i) => {
                 img.style.display = i === index ? 'block' : 'none';
             });
@@ -58,7 +64,6 @@ document.addEventListener('DOMContentLoaded', function() {
             endX = e.touches[0].clientX;
             endY = e.touches[0].clientY;
             
-            // Prevent vertical scrolling when swiping horizontally
             const deltaX = Math.abs(endX - startX);
             const deltaY = Math.abs(endY - startY);
             
@@ -76,7 +81,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const deltaX = endX - startX;
             const deltaY = Math.abs(endY - startY);
             
-            // Only handle horizontal swipes
             if (Math.abs(deltaX) > 50 && Math.abs(deltaX) > deltaY) {
                 if (deltaX > 0) {
                     prevSlide();
@@ -88,7 +92,6 @@ document.addEventListener('DOMContentLoaded', function() {
             isSwiping = false;
         }, { passive: true });
 
-        // Button controls
         if (prevBtn) {
             prevBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
@@ -103,96 +106,72 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
 
-        // Initialize first slide
         showSlide(0);
     }
 
     // Initialize all carousels
-    document.querySelectorAll('.carousel').forEach(initializeCarousel);
+    const carousels = document.querySelectorAll('.carousel');
+    console.log(`Найдено каруселей: ${carousels.length}`);
+    carousels.forEach(initializeCarousel);
 
     // Modal functionality
     function openModal(serviceType) {
-        console.log("Открывается модал для:", serviceType);
+        console.log(`Открытие модального окна для: ${serviceType}`);
         
         const modalId = `${serviceType}Modal`;
         const modal = document.getElementById(modalId);
         
         if (!modal) {
-            console.error(`Не найден модал для serviceType: ${serviceType}, искомый ID: ${modalId}`);
+            console.error(`Модальное окно не найдено: ${modalId}`);
             return;
         }
 
         modal.style.display = 'flex';
-        setTimeout(() => {
-            modal.classList.add('active');
-            const modalContent = modal.querySelector('.modal-content');
-            if (modalContent) {
-                modalContent.classList.add('modal-open');
-            } else {
-                console.error(`Не найден .modal-content внутри модала ${modalId}`);
-            }
-        }, 10);
         document.body.style.overflow = 'hidden';
+        
+        // Initialize carousel if exists
+        const carousel = modal.querySelector('.carousel');
+        if (carousel) {
+            const images = carousel.querySelectorAll('img');
+            images.forEach((img, i) => {
+                img.style.display = i === 0 ? 'block' : 'none';
+            });
+        }
     }
 
     function closeModal(modal) {
         if (!modal) return;
         
-        const modalContent = modal.querySelector('.modal-content');
-        if (modalContent) {
-            modalContent.classList.remove('modal-open');
-            modalContent.classList.add('modal-close');
-        }
-        modal.classList.remove('active');
-        
-        setTimeout(() => {
-            modal.style.display = 'none';
-            if (modalContent) {
-                modalContent.classList.remove('modal-close');
-            }
-            document.body.style.overflow = 'auto';
-        }, 300);
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
     }
 
     // Add click handlers to all service blocks
-    document.querySelectorAll('.service-block').forEach(block => {
+    const serviceBlocks = document.querySelectorAll('.service-block');
+    console.log(`Найдено блоков услуг: ${serviceBlocks.length}`);
+    
+    serviceBlocks.forEach(block => {
         const serviceType = block.getAttribute('data-service');
-        console.log("Найден блок услуги:", serviceType);
-        
         const btn = block.querySelector('.view-examples-btn');
+        
         if (btn) {
             btn.addEventListener('click', (e) => {
                 e.preventDefault();
                 e.stopPropagation();
-                const serviceType = block.getAttribute('data-service');
-                console.log("Клик по кнопке для услуги:", serviceType);
                 openModal(serviceType);
             });
-        } else {
-            console.error(`Не найдена кнопка .view-examples-btn в блоке ${serviceType}`);
         }
     });
 
     // Add close functionality to all modals
-    ['digital', 'video', 'website'].forEach(serviceType => {
-        const modalId = `${serviceType}Modal`;
-        const modal = document.getElementById(modalId);
-        
-        if (!modal) {
-            console.error(`Не найден модал с ID: ${modalId}`);
-            return;
-        }
-
+    document.querySelectorAll('.modal').forEach(modal => {
+        // Close on X button click
         const closeBtn = modal.querySelector('.modal-close');
         if (closeBtn) {
-            closeBtn.addEventListener('click', () => {
-                console.log(`Закрытие модала: ${modalId}`);
-                closeModal(modal);
-            });
-        } else {
-            console.error(`Не найдена кнопка закрытия в модале ${modalId}`);
+            closeBtn.addEventListener('click', () => closeModal(modal));
         }
 
+        // Close on click outside modal content
         modal.addEventListener('click', (e) => {
             if (e.target === modal) {
                 closeModal(modal);
@@ -203,12 +182,46 @@ document.addEventListener('DOMContentLoaded', function() {
     // Close modal on escape key
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
-            ['digital', 'video', 'website'].forEach(serviceType => {
-                const modal = document.getElementById(`${serviceType}Modal`);
-                if (modal && modal.style.display === 'flex') {
+            document.querySelectorAll('.modal').forEach(modal => {
+                if (modal.style.display === 'flex') {
                     closeModal(modal);
                 }
             });
         }
+    });
+
+    // Carousel functionality
+    document.querySelectorAll('.carousel').forEach(carousel => {
+        let currentIndex = 0;
+        const items = carousel.querySelectorAll('img, .website-preview');
+        const total = items.length;
+
+        if (total <= 1) return;
+
+        const prevBtn = carousel.querySelector('.carousel-prev');
+        const nextBtn = carousel.querySelector('.carousel-next');
+
+        function showSlide(index) {
+            items.forEach((item, i) => {
+                item.style.display = i === index ? 'block' : 'none';
+            });
+        }
+
+        if (prevBtn) {
+            prevBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + total) % total;
+                showSlide(currentIndex);
+            });
+        }
+
+        if (nextBtn) {
+            nextBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % total;
+                showSlide(currentIndex);
+            });
+        }
+
+        // Initialize first slide
+        showSlide(0);
     });
 });
